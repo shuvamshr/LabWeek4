@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class ConsolePrint : MonoBehaviour
+public class PrintAndHide : MonoBehaviour
 {
     public Renderer rend;
 
@@ -18,6 +19,15 @@ public class ConsolePrint : MonoBehaviour
     void Update()
     {
         i++;
-        Debug.Log($"{gameObject.name} : {i}");
+        Debug.Log($"{gameObject.name}:{i}");
+
+        if (gameObject.CompareTag("Red") && i == 100)
+        {
+            gameObject.SetActive(false);
+        }
+        else if (gameObject.CompareTag("Blue") && i == Random.Range(150, 251))
+        {
+            rend.enabled = false;
+        }
     }
 }
